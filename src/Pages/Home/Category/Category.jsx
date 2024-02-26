@@ -11,10 +11,14 @@ import slide5 from "../../../assets/home/slide5.jpg"
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import SectionTitle from '../../../Componets/SectionTitle/SectionTitle';
 
 const Category = () => {
   return (
-    <div>
+    <section>
+        <SectionTitle heading={"order online"} subHeading={"From 11.00 am to 10.00 pm"}>
+
+        </SectionTitle>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
@@ -48,7 +52,7 @@ const Category = () => {
         
         
       </Swiper>
-    </div>
+    </section>
   )
 }
 
