@@ -11,9 +11,9 @@ const ClientReview = () => {
 
   useEffect(() => {
     fetch("review.json")
-      .then(res => res.json())
+      .then(res => res.json())fgdfgd
       .then(data => setReview(data));
-  }, []);fsdfsd
+  }, []);
   
   return (
     <div>
