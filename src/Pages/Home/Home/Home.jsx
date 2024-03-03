@@ -3,14 +3,16 @@ import Banner from '../Banner/Banner'
 import Category from '../Category/Category'
 import PopularItems from '../PopularItems/PopularItems'
 import ClientReview from '../ClientReview/ClientReview'
+import Featured from '../Featured/Featured'
 
 const Home = () => {
   return (
-    <div className='text-white'>
+    <div >
       <Banner/>
       <Category/>
       <PopularItems></PopularItems>
-      <ClientReview></ClientReview>
+      {/* <ClientReview></ClientReview> */}
+      <Featured></Featured>
     </div>
   )
 }

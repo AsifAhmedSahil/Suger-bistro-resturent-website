@@ -10,7 +10,7 @@ const ClientReview = () => {
   const { reviews, setReview } = useState([]);
 
   useEffect(() => {
-    fetch("review.json")FDF
+    fetch("review.json")
       .then(res => res.json())
       .then(data => setReview(data));
   }, []);
