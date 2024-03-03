@@ -3,6 +3,7 @@ import React from 'react'
 const Menuitem = ({item}) => {
     const {image,name,recipe,price} = item;
   return (
+    <>
     <div className='flex space-x-2 '>
       <img style={{borderRadius: "0 200px 200px 200px"}} className='w-[100px] cursor-pointer' src={image} alt="" />
       <div>
@@ -13,6 +14,9 @@ const Menuitem = ({item}) => {
         ${price}
       </div>
     </div>
+    
+
+    </>
   )
 }
 
