@@ -2,22 +2,39 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 const SignUp = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
-  const { createUser } = useContext(AuthContext);
+  const { createUser,updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      updateUserProfile(data.name,data.PhotoURL)
+      .then(() =>{
+          console.log("user profile updated")
+          reset()
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Created Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          navigate("/")
+      })
+      .catchc(error => console.log(error))
     });
   };
 
@@ -50,6 +67,21 @@ const SignUp = () => {
                   // required
                 />
                 {errors.name && (
+                  <span className="text-red-600 mt-2">*Name is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("Photo", { required: true })}
+                  placeholder="Photo Url"
+                  className="input input-bordered"
+                  // required
+                />
+                {errors.PhotoURL && (
                   <span className="text-red-600 mt-2">*Name is required</span>
                 )}
               </div>
