@@ -36,23 +36,26 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                {...register("name")}
+                {...register("name",{ required: true })}
                 placeholder="name"
                 className="input input-bordered"
-                required
+                // required
               />
+              {errors.name && <span className="text-red-600 mt-2">*Name is required</span>}
             </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                {...register("email")}
+                {...register("email",{required: true})}
                 placeholder="email"
                 className="input input-bordered"
                 required
               />
+              {errors.email && <span className="text-red-600 mt-2">*Email is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
