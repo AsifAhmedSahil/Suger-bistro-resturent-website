@@ -17,7 +17,7 @@ const NavBar = () => {
         
         {
           user ? <>
-            <button className='btn btn-ghost'>Logout</button>
+            <button className='btn btn-ghost rounded-s-xl'>Logout</button>
           </> : <><li><Link to="/login">Login</Link></li></>
         }
         

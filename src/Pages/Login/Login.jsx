@@ -4,6 +4,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import Swal from 'sweetalert2'
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -27,6 +28,23 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+      Swal.fire({
+        title: "User Login Successful 😍",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
     });
   };
 
@@ -112,7 +130,7 @@ const Login = () => {
             <div>
               <p>
                 <small>
-                  New Here? <Link to="/signup">Create an account</Link>
+                  New Here? <Link className="text-blue-600" to="/signup">Create an account</Link>
                 </small>
               </p>
             </div>
