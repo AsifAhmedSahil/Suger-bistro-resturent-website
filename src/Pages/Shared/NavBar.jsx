@@ -14,10 +14,11 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/order/salad">Order Food</Link></li>
+        <li><Link to="/secret">Secret</Link></li>
         
         {
           user ? <>
-            <button className='btn btn-ghost rounded-s-xl'>Logout</button>
+            <button onClick={handleLogout} className='btn btn-ghost rounded-s-xl'>Logout</button>
           </> : <><li><Link to="/login">Login</Link></li></>
         }
         
