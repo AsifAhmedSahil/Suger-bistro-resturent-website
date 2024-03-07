@@ -1,5 +1,6 @@
 import React from "react";
 import { FaAd, FaBookOpen, FaCalendar, FaHome, FaPaypal, FaShoppingCart } from "react-icons/fa";
+import { MdOutlineMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -43,9 +44,22 @@ const Dashboard = () => {
               My Booking
             </NavLink>
           </li>
+          <div className="divider"></div>
+          <li>
+            <NavLink to="/">
+              <FaHome></FaHome>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/order/salad">
+              <MdOutlineMenu></MdOutlineMenu>
+              Menu
+            </NavLink>
+          </li>
         </ul>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 p-8">
         <Outlet></Outlet>
       </div>
     </div>
