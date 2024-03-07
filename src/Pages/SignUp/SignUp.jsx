@@ -3,8 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const SignUp = () => {
+
+  const axiosPublic = useAxiosPublic();
+
   const {
     register,
     handleSubmit,
@@ -12,29 +16,40 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser,updateUserProfile } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUserProfile(data.name,data.PhotoURL)
-      .then(() =>{
-          console.log("user profile updated")
-          reset()
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User Created Successfully",
-            showConfirmButton: false,
-            timer: 1500
-          });
+      updateUserProfile(data.name, data.PhotoURL)
+        .then(() => {
+          // console.log("user profile updated")
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
 
-          navigate("/")
-      })
-      .catchc(error => console.log(error))
+          axiosPublic.post("/users", userInfo)
+          .then(res => { 
+            if (res.data.insertedId) {
+              console.log("user created successfully")
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
+              navigate("/");
+            }
+          });
+        })
+        .catchc((error) => console.log(error));
     });
   };
 
@@ -129,7 +144,10 @@ const SignUp = () => {
             <div>
               <p>
                 <small>
-                  Already Have Account <Link to="/login" className="text-blue-700">Login please</Link>
+                  Already Have Account{" "}
+                  <Link to="/login" className="text-blue-700">
+                    Login please
+                  </Link>
                 </small>
               </p>
             </div>
