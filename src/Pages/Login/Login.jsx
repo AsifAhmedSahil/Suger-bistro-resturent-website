@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -131,6 +132,7 @@ const Login = () => {
                   value="Login"
                 />
               </div>
+              <SocialLogin></SocialLogin>
             </form>
             <div>
               <p>
