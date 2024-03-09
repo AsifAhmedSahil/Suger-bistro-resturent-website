@@ -1,51 +1,105 @@
 import React from "react";
-import { FaAd, FaBookOpen, FaCalendar, FaEnvelope, FaHome, FaPaypal, FaShoppingCart } from "react-icons/fa";
+import {
+  FaAd,
+  FaBook,
+  FaBookOpen,
+  FaCalendar,
+  FaEnvelope,
+  FaHome,
+  FaList,
+  FaPaypal,
+  FaShoppingCart,
+  FaUser,
+  FaUtensilSpoon,
+} from "react-icons/fa";
 import { MdOutlineMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
-  const [cart] = useCart()
+  const [cart] = useCart();
+
+  const isAdmin = true;
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-orange-500">
         <ul className="menu">
-          <li>
-            <NavLink to="/dashboard/userHome">
-              <FaHome></FaHome>
-              User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/cart">
-              <FaShoppingCart></FaShoppingCart>
-              My Cart ({cart.length})
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/reservation">
-              <FaCalendar></FaCalendar>
-              Reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/payment">
-              <FaPaypal></FaPaypal>
-              Payment History
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/addReview">
-              <FaAd></FaAd>
-              Add Review
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/myBooking">
-              <FaBookOpen></FaBookOpen>
-              My Booking
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/adminHome">
+                  <FaHome></FaHome>
+                  Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addItems">
+                  <FaUtensilSpoon></FaUtensilSpoon>
+                  Add Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageItems">
+                  <FaList></FaList>
+                  Manage Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/bookings">
+                  <FaBook></FaBook>
+                  Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/users">
+                  <FaUser></FaUser>
+                  All Users
+                </NavLink>
+              </li>
+              
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/dashboard/userHome">
+                  <FaHome></FaHome>
+                  User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/cart">
+                  <FaShoppingCart></FaShoppingCart>
+                  My Cart ({cart.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <FaCalendar></FaCalendar>
+                  Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment">
+                  <FaPaypal></FaPaypal>
+                  Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addReview">
+                  <FaAd></FaAd>
+                  Add Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myBooking">
+                  <FaBookOpen></FaBookOpen>
+                  My Booking
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {/* Shared items */}
           <div className="divider"></div>
           <li>
             <NavLink to="/">
