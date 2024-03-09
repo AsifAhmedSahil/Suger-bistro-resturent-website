@@ -14,6 +14,10 @@ const AllUsers = () => {
         }
     })
 
+    const handleMakeAdmin = user =>{
+        
+    }
+
     const handleDelete = user =>{
         Swal.fire({
             title: "Are you sure?",
@@ -62,7 +66,7 @@ const AllUsers = () => {
             <td>{user.email}</td>
             <td>
             <button
-                    
+                    onClick={() => handleMakeAdmin(user)}
                     className="btn bg-orange-600 btn-lg  rounded-xl text-2xl"
                   >
                     <FaUsers></FaUsers>
