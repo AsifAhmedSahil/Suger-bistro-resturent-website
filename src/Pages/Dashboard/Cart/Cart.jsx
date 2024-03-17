@@ -68,20 +68,13 @@ const Cart = () => {
                         />
                       </div>
                     </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                      <div className="text-sm opacity-50">United States</div>
-                    </div>
+                    
                   </div>
                 </td>
                 <td>
-                  Zemlak, Daniel and Leannon
-                  <br />
-                  <span className="badge badge-ghost badge-sm">
-                    Desktop Support Technician
-                  </span>
+                  {items.name}
                 </td>
-                <td>Purple</td>
+                <td>$ {items.price}</td>
                 <th>
                   <button
                     onClick={() => handleDelete(items._id)}

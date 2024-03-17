@@ -15,7 +15,11 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get("/users",{
+        headers:{
+          'authorization': `Bearer ${localStorage.getItem('access-token')}`
+        }
+      });
       return res.data;
     },
   });
@@ -84,7 +88,7 @@ const AllUsers = () => {
                   <td>{user.email}</td>
                   <td>
                     {user.role === "admin" ? (
-                      "Admin"
+                      <span className="text-red-600">Admin</span>
                     ) : (
                       <button
                         onClick={() => handleMakeAdmin(user)}
