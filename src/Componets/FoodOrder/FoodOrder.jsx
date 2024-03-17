@@ -25,7 +25,7 @@ const FoodOrder = ({item}) => {
 
         const cartItem = {
           menuId: _id,
-          user:user.email,
+          email:user.email,
           name,price,image
         }
         axiosSecure.post("/carts",cartItem)
@@ -37,7 +37,7 @@ const FoodOrder = ({item}) => {
               icon: "success",
               title:  `${name} added to the cart`,
               showConfirmButton: false,
-              timer: 2500
+              timer: 1500
             });
             // refetch the cart again
             refetch()
