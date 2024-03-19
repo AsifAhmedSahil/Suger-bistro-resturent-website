@@ -2,9 +2,11 @@ import React from "react";
 import SectionTitle from "../../../Componets/SectionTitle/SectionTitle";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import CartItems from "./CheckoutForm";
+import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
-  const stripePromise = loadStripe("");
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
   return (
     <div>
       <SectionTitle
@@ -13,7 +15,9 @@ const Payment = () => {
       ></SectionTitle>
 
       <div>
-        <Elements stripe={stripePromise}></Elements>
+        <Elements stripe={stripePromise}>
+            <CheckoutForm></CheckoutForm>
+        </Elements>
       </div>
     </div>
   );
