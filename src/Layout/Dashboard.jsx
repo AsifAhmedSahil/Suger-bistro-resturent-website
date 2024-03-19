@@ -4,6 +4,7 @@ import {
   FaBook,
   FaBookOpen,
   FaCalendar,
+  FaEdit,
   FaEnvelope,
   FaHome,
   FaList,
@@ -16,6 +17,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import { SlCalender } from "react-icons/sl";
 
 const Dashboard = () => {
   const [cart] = useCart();
@@ -47,9 +49,9 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/bookings">
-                  <FaBook></FaBook>
-                  Bookings
+                <NavLink to="/dashboard/manageBookings">
+                  <SlCalender ></SlCalender>
+                  Manage Bookings
                 </NavLink>
               </li>
               <li>
