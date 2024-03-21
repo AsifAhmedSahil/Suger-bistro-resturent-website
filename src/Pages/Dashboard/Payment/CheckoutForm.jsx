@@ -81,6 +81,20 @@ const CheckoutForm = () => {
           timer: 1000
         });
         setTransectionId(paymentIntent.id);
+
+        // now save to the dattabase ***
+        const payment = {
+          email: user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          date: new Date(),
+          cartIds: cart.map(item => item._id),
+          menuItemIds: cart.map(item => item.menuId),
+          status: 'pending'
+        }
+
+        const res = await axiosSecure.post('/payment',payment)
+        console.log("payment save",res.data)
       }
     }
   };
