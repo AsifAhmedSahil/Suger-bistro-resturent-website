@@ -19,6 +19,8 @@ import ManageAllItems from "../Pages/Dashboard/ManageAllItems/ManageAllItems";
 import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 
 
@@ -60,6 +62,10 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
+            path: "userHome",
+            element:<UserHome></UserHome>
+        },
+        {
           path: "cart",
           element:<Cart></Cart>
         },
@@ -74,6 +80,10 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
         },
 
         // Admin Route setup
+        {
+            path:"adminHome",
+            element:<AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+        },
         {
             path:'addItems',
             element:<AdminRoutes><AddItems></AddItems></AdminRoutes>
