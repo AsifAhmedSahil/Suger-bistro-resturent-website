@@ -13,7 +13,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure()
-  const [cart] = useCart()
+  const [cart,refetch] = useCart()
   const {user} = useAuth()
   
   const totalPrice = cart.reduce((total,item)=> total+item.price,0)
@@ -22,11 +22,13 @@ const CheckoutForm = () => {
   
 
   useEffect(()=>{
-    axiosSecure.post('/create-payment-intent',{price:totalPrice})
+    if(totalPrice > 0){
+      axiosSecure.post('/create-payment-intent',{price:totalPrice})
     .then(res =>{
       console.log("client secret under payment",res.data.clientSecret);
       setClientSecret(res.data.clientSecret)
     })
+    }
 
   },[axiosSecure,totalPrice])
 
@@ -73,13 +75,7 @@ const CheckoutForm = () => {
     else{
       console.log('payment intent',paymentIntent)
       if(paymentIntent.status === 'succeeded'){
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your Payment has been completed",
-          showConfirmButton: false,
-          timer: 1000
-        });
+        
         setTransectionId(paymentIntent.id);
 
         // now save to the dattabase ***
@@ -95,6 +91,17 @@ const CheckoutForm = () => {
 
         const res = await axiosSecure.post('/payment',payment)
         console.log("payment save",res.data)
+        refetch();
+        if(res.data?.paymentResult?.insertedId){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Payment Successful",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          
+        }
       }
     }
   };
