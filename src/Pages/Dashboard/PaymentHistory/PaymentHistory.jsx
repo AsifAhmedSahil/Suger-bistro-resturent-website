@@ -23,7 +23,31 @@ const PaymentHistory = () => {
 
     return (
         <div>
-            <h3 className='text-3xl'>Total Payments: </h3>
+            <h3 className='text-3xl'>Total Payments:{payments.length} </h3>
+
+            <div className="overflow-x-auto mt-24">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr className='font-bold text-xl text-black'>
+        <th></th>
+        <th>Price</th>
+        <th>Transaction Id</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {payments.map((payment,index)=> <tr key={payment._id}>
+        <th>{index+1}</th>
+        <td>{payment.price}</td>
+        <td>{payment.transactionId}</td>
+        <td>{payment.status}</td>
+      </tr>)}
+      
+      
+    </tbody>
+  </table>
+</div>
         </div>
     );
 }

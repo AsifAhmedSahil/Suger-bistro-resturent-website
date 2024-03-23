@@ -17,7 +17,7 @@ const AdminHome = () => {
   });
   return (
     <div>
-      <h3>Hi, Welcome</h3>
+      <p>Hi, Welcome</p>
       {user?.displayName ? user.displayName : "back"}
 
       <div className="mt-24 ">
