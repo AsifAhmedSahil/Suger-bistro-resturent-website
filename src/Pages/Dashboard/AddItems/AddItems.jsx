@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure"
 
 
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -52,6 +53,9 @@ const AddItems = () => {
 
     return (
         <div>
+            <Helmet>
+            <title>Suger Bistro | AddItems </title>
+        </Helmet>
             <SectionTitle heading="add an item" subHeading="What's new?" ></SectionTitle>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>

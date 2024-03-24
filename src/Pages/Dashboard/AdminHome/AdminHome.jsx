@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaBook, FaBorderAll, FaDollarSign, FaUsers } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const AdminHome = () => {
   const { user } = useAuth();
@@ -17,6 +18,9 @@ const AdminHome = () => {
   });
   return (
     <div>
+      <Helmet>
+            <title>Suger Bistro | Admin </title>
+        </Helmet>
       <p>Hi, Welcome</p>
       {user?.displayName ? user.displayName : "back"}
 

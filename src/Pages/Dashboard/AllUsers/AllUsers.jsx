@@ -9,6 +9,7 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -62,6 +63,9 @@ const AllUsers = () => {
   };
   return (
     <div>
+      <Helmet>
+            <title>Suger Bistro | All Users </title>
+        </Helmet>
       <h2 className="text-4xl">Total Users {users.length}</h2>
       <div>
         <div className="overflow-x-auto">

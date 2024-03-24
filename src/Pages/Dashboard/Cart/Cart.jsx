@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const [cart,refetch] = useCart();
@@ -37,6 +38,9 @@ const Cart = () => {
   };
   return (
     <div>
+      <Helmet>
+            <title>Suger Bistro | Cart </title>
+        </Helmet>
       <div className="flex justify-evenly mb-8 ">
         <h2 className="text-4xl">Items:{cart.length}</h2>
         <h2 className="text-4xl">Total Price:{totalPrice}</h2>

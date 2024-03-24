@@ -2,6 +2,7 @@ import React from 'react'
 import useAuth from '../../../hooks/useAuth'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
+import { Helmet } from 'react-helmet-async'
 
 const PaymentHistory = () => {
     const { user } = useAuth()
@@ -23,6 +24,9 @@ const PaymentHistory = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Suger Bistro | Payment History</title>
+        </Helmet>
             <h3 className='text-3xl'>Total Payments:{payments.length} </h3>
 
             <div className="overflow-x-auto mt-24">

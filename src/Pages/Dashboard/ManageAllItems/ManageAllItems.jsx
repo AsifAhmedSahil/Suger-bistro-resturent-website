@@ -5,6 +5,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ManageAllItems = () => {
   const [menu, , refetch] = useMenu();
@@ -38,6 +39,9 @@ const ManageAllItems = () => {
   };
   return (
     <div>
+      <Helmet>
+            <title>Suger Bistro | Manage Items </title>
+        </Helmet>
       <div>
         <SectionTitle
           heading="manage all items"
