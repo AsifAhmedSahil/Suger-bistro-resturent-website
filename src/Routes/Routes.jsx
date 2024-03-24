@@ -21,6 +21,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import NotFound from "../Pages/Shared/NotFound";
 
 
 
@@ -30,6 +31,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<NotFound></NotFound>,
       children:[
         {
             path:"/",
@@ -60,6 +62,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
     {
       path:"dashboard",
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      errorElement:<NotFound></NotFound>,
       children:[
         {
             path: "userHome",
